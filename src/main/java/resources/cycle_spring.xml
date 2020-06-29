@@ -1,0 +1,31 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="basicDataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:Xe" />
+		<property name="username" value="cycledb" />
+		<property name="password" value="engine2020" />
+		<property name="maxActive" value="128" />
+		<property name="maxIdle" value="32" />
+		<property name="maxWait" value="10000" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testWhileIdle" value="true" />
+		<property name="validationQuery" value="SELECT 1 FROM dual" />
+		<property name="testOnReturn" value="true" />
+		<property name="minEvictableIdleTimeMillis" value="30000" />
+		<property name="timeBetweenEvictionRunsMillis" value="5000" />
+
+	</bean>
+
+	<bean id="jdbcTemplat" class="com.cycle.pricing.engine.utils.JdbcTemplet">
+		<property name="dataSource" ref="basicDataSource" />
+	</bean>
+
+	<bean id="cyclePricingEngineDaoImpl" class="com.cycle.pricing.engine.dao.CyclePricingEngineDaoImpl">
+		<property name="jdbcTemplet" ref="jdbcTemplat" />
+	</bean>
+
+</beans>

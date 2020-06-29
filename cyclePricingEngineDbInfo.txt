@@ -1,0 +1,73 @@
+create table components(
+component_id number(5) not null PRIMARY KEY, component_name varchar2(50) not null
+);
+
+create table parts(part_id number(5) not null PRIMARY KEY, part_name varchar2(50) not null, component_id number(5) REFERENCES components(component_id));
+
+create table part_part_cost(
+cost_id number(5) not null PRIMARY KEY, cost number(7, 2) not null, start_date Date not null, end_date Date not null, part_id number(5) REFERENCES parts(part_id)
+);
+--------------------------------------------------------------------------------------
+db username - cycledb, password - engine2020
+---------------------------------------------------------------------------------------
+insert all
+into components values(1, 'frame')
+into components values(2, 'ChainAssembly')
+into components values(3, 'HandleBarWithBreaks')
+into components values(4, 'Seating')
+into components values(5, 'Wheels')
+select * from dual;
+--------------------------------------------------------------------------------------
+insert all
+into parts values(1, 'seatTube', 1)
+into parts values(2, 'fork', 1)
+into parts values(3, 'derailleurHunger', 1)
+into parts values(4, 'chain', 2)
+into parts values(5, 'pulleyWheel', 2)
+into parts values(6, 'crank', 2)
+into parts values(7, 'gear', 3)
+into parts values(8, 'cycleBreak', 3)
+into parts values(9, 'handleBar', 3)
+into parts values(10, 'cover', 4)
+into parts values(11, 'saddle', 4)
+into parts values(12, 'suspension', 4)
+into parts values(13, 'tyre', 5)
+into parts values(14, 'rim', 5)
+into parts values(15, 'spoke', 5)
+into parts values(16, 'tube', 5)
+select * from dual;
+---------------------------------------------------------------------------------------
+insert all
+into part_cost values(1, 200.00, '1 JAN 2019', '31 DEC 2019', 1)
+into part_cost values(2, 210.00, '1 JAN 2020', '31 DEC 2020', 1)
+into part_cost values(3, 100.00, '1 JAN 2019', '31 DEC 2019', 2)
+into part_cost values(4, 110.00, '1 JAN 2020', '31 DEC 2020', 2)
+into part_cost values(5, 120.00, '1 JAN 2019', '31 DEC 2019', 3)
+into part_cost values(6, 140.00, '1 JAN 2020', '31 DEC 2020', 3)
+into part_cost values(7, 160.00, '1 JAN 2019', '31 DEC 2019', 4)
+into part_cost values(8, 220.00, '1 JAN 2020', '31 DEC 2020', 4)
+into part_cost values(9, 190.00, '1 JAN 2019', '31 DEC 2019', 5)
+into part_cost values(10, 180.00, '1 JAN 2020', '31 DEC 2020', 5)
+into part_cost values(11, 230.00, '1 JAN 2019', '31 DEC 2019', 6)
+into part_cost values(12, 340.00, '1 JAN 2020', '31 DEC 2020', 6)
+into part_cost values(13, 380.00, '1 JAN 2019', '31 DEC 2019', 7)
+into part_cost values(14, 230.00, '1 JAN 2020', '31 DEC 2020', 7)
+into part_cost values(15, 150.00, '1 JAN 2019', '31 DEC 2019', 8)
+into part_cost values(16, 350.00, '1 JAN 2020', '31 DEC 2020', 8)
+into part_cost values(17, 380.00, '1 JAN 2019', '31 DEC 2019', 9)
+into part_cost values(18, 320.00, '1 JAN 2020', '31 DEC 2020', 9)
+into part_cost values(19, 180.00, '1 JAN 2019', '31 DEC 2019', 10)
+into part_cost values(20, 280.00, '1 JAN 2020', '31 DEC 2020', 10)
+into part_cost values(21, 130.00, '1 JAN 2019', '31 DEC 2019', 11)
+into part_cost values(22, 290.00, '1 JAN 2020', '31 DEC 2020', 11)
+into part_cost values(23, 120.00, '1 JAN 2019', '31 DEC 2019', 12)
+into part_cost values(24, 280.00, '1 JAN 2020', '31 DEC 2020', 12)
+into part_cost values(25, 230.00, '1 JAN 2019', '31 DEC 2019', 13)
+into part_cost values(26, 120.00, '1 JAN 2020', '31 DEC 2020', 13)
+into part_cost values(27, 100.00, '1 JAN 2019', '31 DEC 2019', 14)
+into part_cost values(28, 120.00, '1 JAN 2020', '31 DEC 2020', 14)
+into part_cost values(29, 100.00, '1 JAN 2019', '31 DEC 2019', 15)
+into part_cost values(30, 240.00, '1 JAN 2020', '31 DEC 2020', 15)
+into part_cost values(31, 230.00, '1 JAN 2019', '31 DEC 2019', 16)
+into part_cost values(32, 210.00, '1 JAN 2020', '31 DEC 2020', 16)
+select * from dual;
